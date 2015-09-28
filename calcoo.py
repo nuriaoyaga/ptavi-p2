@@ -15,6 +15,16 @@ class Calculadora():
     #Operacion resta
         return op1 - op2
 
+    def numero(self, op):
+    #pasa a entero o a float
+        try:
+            if '.' in op:
+                return(float(op))
+            else:
+                return(int(op))
+        except ValueError:
+            sys.exit("Error: Non numerical parameters")
+
 
 if __name__ == "__main__":
     try:
