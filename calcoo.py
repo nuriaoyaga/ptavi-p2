@@ -4,15 +4,12 @@
 import sys
 
 class Calculadora():
-	def __init__(self, op1, op2):
-		self.op1 = op1
-		self.op2 = op2
 
-	def plus(self):
-		return self.op1 + self.op2
+	def plus(self,op1,op2):
+		return op1 + op2
 
-	def minus(self):
-		return self.op1 - self.op2
+	def minus(self,op1,op2):
+		return op1 - op2
 
 
 if __name__ == "__main__":
@@ -23,12 +20,12 @@ if __name__ == "__main__":
 	except ValueError:
 		sys.exit("Error: Non numerical parameters")
 
-	c1 = Calculadora(operando1, operando2)
+	c1 = Calculadora()
 
 	if sys.argv[2] == "suma":
-		result = c1.plus()
+		result = c1.plus(operando1,operando2)
 	elif  sys.argv[2] == "resta":
-		result = c1.minus()
+		result = c1.minus(operando1,operando2)
 	else:
 		sys.exit('Operación sólo puede ser sumar o restar.')
 
