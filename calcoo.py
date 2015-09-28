@@ -8,9 +8,11 @@ import sys
 class Calculadora():
 
     def plus(self, op1, op2):
+    #Operacion suma
         return op1 + op2
 
     def minus(self, op1, op2):
+    #Operacion resta
         return op1 - op2
 
 
