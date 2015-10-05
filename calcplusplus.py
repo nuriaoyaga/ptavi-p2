@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import calcplus
 
-import csv
 
-with open('operaciones.csv', newline='') as csvfile:
-    operaciones = csv.reader(csvfile, delimiter=' ', quotechar='')
-    for row in operaciones:
-        print(row)
+with open(sys.argv[1]) as fich:
+    lines = calcplus.leer_fichero(fich)
+    calcplus.imprimir_resultado(lines)
