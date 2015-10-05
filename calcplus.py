@@ -2,36 +2,33 @@
 # -*- coding: utf-8 -*-
 
 import sys
-
+import calcoo
 import calcoohija
 
-fich = open('operaciones', 'r')
-lines = fich.readlines()
-if __name__ == "__main__":
-    for line in lines:
-        operaciones = line.split(',')
-        operacion = operaciones[0]
-        operandos = operaciones[1:]
-        operandos[-1] = operandos[-1][:-1]
-        c1 = calcoohija.CalculadoraHija()
-        result = int(operandos[0])
-        if operacion == "suma":
-            for operando in operandos[1:]:
-                operando = c1.numero(operando)
-                result = c1.plus(result, operando)
-        elif operacion == "resta":
-            for operando in operandos[1:]:
-                operando = c1.numero(operando)
-                result = c1.minus(result, operando)
-        elif operacion == "divide":
-            for operando in operandos[1:]:
-                operando = c1.numero(operando)
-                result = c1.div(result, operando)
-        elif operacion == "multiplica":
-            for operando in operandos[1:]:
-                operando = c1.numero(operando)
-                result = c1.prod(result, operando)
-        else:
-            sys.exit('Operación no válida.')
 
-        print(result)
+def leer_fichero(fichero):
+    lines = fichero.readlines()
+    return lines
+
+
+def calcula_linea(line):
+    operaciones = line.split(',')
+    operacion = operaciones[0]
+    operandos = operaciones[1:]
+    operandos[-1] = operandos[-1][:-1]
+    result = calcoo.numero(operandos[0])
+    for operando in operandos[1:]:
+        operando1 = calcoo.numero(operando)
+        result = calcoohija.calculosplus(operacion, result, operando1)
+    return result
+
+
+def imprimir_resultado(lineas):
+    for linea in lineas:
+        print(calcula_linea(linea))
+
+
+if __name__ == "__main__":
+    fich = open(sys.argv[1], 'r')
+    lines = leer_fichero(fich)
+    imprimir_resultado(lines)
