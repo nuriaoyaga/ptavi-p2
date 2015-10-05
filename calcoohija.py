@@ -19,18 +19,13 @@ class CalculadoraHija(calcoo.Calculadora):
             sys.exit("Division by zero is not allowed")
 
 
-def calculosplus(operacion, op1, op2):
-    c1 = CalculadoraHija()
-    if operacion == "producto":
-        result = c1.prod(op1, op2)
-    elif operacion == "cociente":
-        result = c1.div(op1, op2)
-    else:
-        result = calcoo.calculos(operacion, op1, op2)
-    return(result)
+c1 = CalculadoraHija()
+#Añadimos al diccionario las nuevas operaciones
+calcoo.dicc["producto"] = c1.prod
+calcoo.dicc["cociente"] = c1.div
+
 
 if __name__ == "__main__":
     operando1 = calcoo.numero(sys.argv[1])
     operando2 = calcoo.numero(sys.argv[3])
-    operacion = sys.argv[2]
-    print(calculosplus(operacion, operando1, operando2))
+    print(calcoo.calculos(operando1, operando2))
