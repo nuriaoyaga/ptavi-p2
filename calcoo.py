@@ -17,7 +17,7 @@ class Calculadora():
 
 
 def numero(op):
-    #pasa a entero o a float
+    """Funcion que pasa de string a float o int"""
     try:
         if '.' in op:
             return(float(op))
@@ -27,19 +27,26 @@ def numero(op):
         sys.exit("Error: Non numerical parameters")
 
 
-def calculos(operacion, operando1, operando2):
-    c1 = Calculadora()
-    if operacion == "suma":
-        result = c1.plus(operando1, operando2)
-    elif operacion == "resta":
-        result = c1.minus(operando1, operando2)
-    else:
+def crear_operaciones(arg):
+    pass
+
+
+c1 = Calculadora()
+#creamos un diccionario con las operaciones y su funcion
+dicc = {"suma": c1.plus, "resta": c1.minus}
+
+
+def calculos(operando1, operando2):
+    """Funcion que realiza los calculos segun la clave del diccionario"""
+    try:
+        funcion = dicc[sys.argv[2]]
+    except:
         sys.exit('Operación no válida.')
+    result = funcion(operando1, operando2)
     return result
 
 
 if __name__ == "__main__":
     operando1 = numero(sys.argv[1])
     operando2 = numero(sys.argv[3])
-    operacion = sys.argv[2]
-    print(calculos(operacion, operando1, operando2))
+    print(calculos(operando1, operando2))
