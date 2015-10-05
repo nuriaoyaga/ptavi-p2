@@ -36,12 +36,8 @@ c1 = Calculadora()
 dicc = {"suma": c1.plus, "resta": c1.minus}
 
 
-def calculos(operando1, operando2):
+def calculos(funcion, operando1, operando2):
     """Funcion que realiza los calculos segun la clave del diccionario"""
-    try:
-        funcion = dicc[sys.argv[2]]
-    except:
-        sys.exit('Operación no válida.')
     result = funcion(operando1, operando2)
     return result
 
@@ -49,4 +45,8 @@ def calculos(operando1, operando2):
 if __name__ == "__main__":
     operando1 = numero(sys.argv[1])
     operando2 = numero(sys.argv[3])
-    print(calculos(operando1, operando2))
+    try:
+        funcion = dicc[sys.argv[2]]
+    except:
+        sys.exit('Operación no válida.')
+    print(calculos(funcion, operando1, operando2))
