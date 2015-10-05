@@ -16,7 +16,7 @@ class CalculadoraHija(calcoo.Calculadora):
         try:
             return op1 / op2
         except ZeroDivisionError:
-            print("Division by zero is not allowed")
+            sys.exit("Division by zero is not allowed")
 
 
 def calculosplus(operacion, op1, op2):
