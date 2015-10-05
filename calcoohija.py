@@ -28,4 +28,8 @@ calcoo.dicc["cociente"] = c1.div
 if __name__ == "__main__":
     operando1 = calcoo.numero(sys.argv[1])
     operando2 = calcoo.numero(sys.argv[3])
-    print(calcoo.calculos(operando1, operando2))
+    try:
+        funcion = calcoo.dicc[sys.argv[2]]
+    except:
+        sys.exit('Operación no válida.')
+    print(calcoo.calculos(funcion, operando1, operando2))
