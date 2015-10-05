@@ -18,24 +18,19 @@ class CalculadoraHija(calcoo.Calculadora):
         except ZeroDivisionError:
             print("Division by zero is not allowed")
 
-if __name__ == "__main__":
-    try:
-        operando1 = int(sys.argv[1])
-        operando2 = int(sys.argv[3])
-    except ValueError:
-        sys.exit("Error: Non numerical parameters")
 
+def  calculosplus(operacion, op1, op2):
     c1 = CalculadoraHija()
-
-    if sys.argv[2] == "producto":
+    if operacion == "producto":
         result = c1.prod(operando1, operando2)
-    elif sys.argv[2] == "cociente":
+    elif operacion == "cociente":
         result = c1.div(operando1, operando2)
-    elif sys.argv[2] == "suma":
-        result = c1.plus(operando1, operando2)
-    elif sys.argv[2] == "resta":
-        result = c1.minus(operando1, operando2)
     else:
-        sys.exit('Operación no válida.')
+        result = calcoo.calculos(operacion, op1, op2)
+    return(result)
 
-    print(result)
+if __name__ == "__main__":
+    operando1 = calcoo.numero(sys.argv[1])
+    operando2 = calcoo.numero(sys.argv[3])
+    operacion = sys.argv[2]
+    print(calculosplus (operacion, operando1, operando2))
