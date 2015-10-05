@@ -12,14 +12,19 @@ def leer_fichero(fichero):
 
 
 def calcula_linea(line):
+    """Realiza las operaciones que se marcan en cada linea del fichero"""
     operaciones = line.split(',')
     operacion = operaciones[0]
+    try:
+        funcion = calcoo.dicc[operacion]
+    except:
+        sys.exit('Operación no válida.')
     operandos = operaciones[1:]
     operandos[-1] = operandos[-1][:-1]
     result = calcoo.numero(operandos[0])
     for operando in operandos[1:]:
         operando1 = calcoo.numero(operando)
-        result = calcoohija.calculosplus(operacion, result, operando1)
+        result = calcoo.calculos(funcion, result, operando1)
     return result
 
 
