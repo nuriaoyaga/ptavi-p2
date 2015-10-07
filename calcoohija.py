@@ -21,8 +21,8 @@ class CalculadoraHija(calcoo.Calculadora):
 
 c1 = CalculadoraHija()
 #Añadimos al diccionario las nuevas operaciones
-calcoo.dicc["producto"] = c1.prod
-calcoo.dicc["cociente"] = c1.div
+calcoo.dicc["multiplica"] = c1.prod
+calcoo.dicc["divide"] = c1.div
 
 
 if __name__ == "__main__":
